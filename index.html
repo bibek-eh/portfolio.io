@@ -1,91 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Bibek Dhawal Dhobi | Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <style>
         * {
             margin: 0;
             padding: 0;
-            font-family: sans-serif;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
+        body {
+            background: #0f0f0f;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+
+        body::before {
+            content: '';
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+        }
+
+        /* Navbar */
+
         .navbar {
-            background-color: rgb(122, 225, 243);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 25px 8%;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
-            font-size: 50px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00d9ff;
+            text-shadow: 0 0 20px #00d9ff;
         }
 
-        .logo a,
-        .nav a {
-            text-decoration: none;
-            color: black;
+        .logo span {
+            color: white;
         }
 
         .nav {
             display: flex;
-            font-size: 20px;
+            gap: 30px;
         }
 
-        .nav li {
-            list-style: none;
-            margin: 0 15px;
+        .nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: .4s;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .nav a:hover {
+            color: #00d9ff;
+            text-shadow: 0 0 15px #00d9ff;
         }
+
+        /* Hero Section */
 
         .main {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 80px 8%;
+            min-height: 85vh;
+            gap: 50px;
             flex-wrap: wrap;
-            padding: 50px;
-            gap: 30px;
         }
 
         .written {
-            max-width: 650px;
-            min-width: 400px;
+            max-width: 700px;
         }
 
         .hello {
-            font-size: 45px;
-            color: black;
+            font-size: 1.5rem;
+            color: #00d9ff;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
         }
 
         .words {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            font-size: 55px;
-            margin-top: 10px;
+            font-size: 2rem;
+            font-weight: 600;
         }
 
         .s-e {
-            color: blue;
-            display: inline-block;
+            color: #00d9ff;
+            text-shadow: 0 0 15px #00d9ff;
         }
 
+        .description {
+            margin-top: 20px;
+            line-height: 1.8;
+            color: #cfcfcf;
+        }
+
+        /* Buttons */
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: .4s;
+        }
+
+        .primary {
+            background: #00d9ff;
+            color: black;
+            font-weight: 600;
+        }
+
+        .primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px #00d9ff;
+        }
+
+        .secondary {
+            background: transparent;
+            border: 2px solid #00d9ff;
+            color: #00d9ff;
+        }
+
+        .secondary:hover {
+            background: #00d9ff;
+            color: black;
+            box-shadow: 0 0 25px #00d9ff;
+        }
+
+        /* Profile Card */
+
         .img {
-            width: 500px;
-            height: 560px;
-            border-radius: 10%;
+            width: 400px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
             overflow: hidden;
-            flex-shrink: 0;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+            animation: float 4s ease-in-out infinite;
         }
 
         .img img {
@@ -94,187 +186,224 @@
             object-fit: cover;
         }
 
-        .buttons {
-            padding: 0 50px 50px;
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
-        .buttons button {
-            background-color: rgb(188, 188, 211);
-            color: black;
-            padding: 10px 20px;
-            margin-right: 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .buttons button:hover {
-            background-color: rgb(165, 165, 190);
-        }
+        /* Social */
 
         .footer {
-            background-color: rgb(147, 233, 248);
-            color: black;
-            font-size: 30px;
             text-align: center;
-            padding: 20px;
+            padding: 40px;
+            background: #111;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .links {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .links a {
-            color: black;
-            font-size: 40px;
+            color: white;
+            font-size: 28px;
             margin: 0 15px;
-            text-decoration: none;
+            transition: .4s;
         }
+
+        .links a:hover {
+            color: #00d9ff;
+            text-shadow: 0 0 20px #00d9ff;
+        }
+
+        .footer p {
+            color: #bdbdbd;
+        }
+
+        /* Typing Cursor */
 
         #typing-text::after {
             content: "|";
-            animation: blink 0.8s infinite;
+            animation: blink .8s infinite;
         }
 
         @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-
             50% {
                 opacity: 0;
             }
         }
 
-        @media (max-width: 900px) {
+
+        @media(max-width:900px) {
+
             .main {
                 flex-direction: column-reverse;
                 text-align: center;
             }
 
-            .written {
-                min-width: auto;
+            .name {
+                font-size: 2.8rem;
             }
 
             .words {
                 justify-content: center;
-                font-size: 40px;
-            }
-
-            .hello {
-                font-size: 35px;
             }
 
             .img {
                 width: 300px;
-                height: 300px;
+                height: 380px;
             }
+
+            .nav {
+                display: none;
+            }
+
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="#">BDD</a>
+    <nav class="navbar">
+
+        <div class="logo">
+            BDD<span></span>
+        </div>
+
+        <div class="nav">
+            <a href="#">Home</a>
+            <a href="https://www.facebook.com/bibek.dhawal.31">About Me</a>
+            <a href="https://forms.gle/mFUaCiUNmmkKrW7s5">Contact</a>
+        </div>
+
+    </nav>
+
+    <section class="main">
+
+        <div class="written">
+
+            <h3 class="hello">HELLO THERE 👋</h3>
+
+            <h1 class="name">
+                Bibek Dhawal Dhobi
+            </h1>
+
+            <div class="words">
+                I am a&nbsp;
+                <span id="typing-text" class="s-e"></span>
             </div>
 
-            <ul class="nav">
-                <li><a href="#">Home</a></li>
-                <!-- <li><a href="#">Project</a></li> -->
-                <li><a href="#">About Me</a></li>
-                <li><a href="https://forms.gle/mFUaCiUNmmkKrW7s5">Contact Me</a></li>
-            </ul>
-        </nav>
-    </header>
+            <p class="description">
+                Passionate software developer focused on building modern,
+                responsive and futuristic digital experiences. I enjoy
+                web development, UI/UX design, programming and exploring
+                new technologies.
+            </p>
 
-    <main>
-        <div class="main">
+            <div class="buttons">
 
-            <div class="written">
-                <div class="hello">
-                    Hello!! <br>
-                    I am Bibek Dhawal Dhobi
-                </div>
+                <button class="btn primary">
+                    About Me
+                </button>
 
-                <div class="words">
-                    <span>I am a&nbsp;</span>
-                    <span class="s-e" id="typing-text"></span>
-                </div>
-            </div>
+                <button class="btn secondary">
+                    Follow Me
+                </button>
 
-            <div class="img">
-                <img src="pp pic 1.jpeg" alt="Profile Picture">
             </div>
 
         </div>
-
-        <div class="buttons">
-            <button>About Me</button>
-            <a href="https://www.instagram.com/exclusive_banda0/" target="_blank">
-            <button>Follow Me</button></a>
-        </div>
-    </main>
-
-    <footer>
-        <div class="footer">
-
-            <div class="links">
-                <a href="https://www.facebook.com/bibek.dhawal.31" target="_blank">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-
-                <a href="https://web.whatsapp.com/" target="_blank">
-                    <i class="fa-brands fa-square-whatsapp"></i>
-                </a>
-
-                <a href="https://www.youtube.com/@programmers_bd" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-            </div>
-
-            <div class="word">
-                Copyright &copy; 2026 | All Rights Reserved
-            </div>
+        <div class="img">
+            <img src="picture.jpeg" alt="Bibek">
 
         </div>
+
+    </section>
+
+    <footer class="footer">
+
+        <div class="links">
+
+            <a href="https://github.com/bibek-eh"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/bibek-dhawal-084286414?utm_source=share_via&utm_content=profile&utm_medium=member_android"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/exclusive_banda0/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/bibek.dhawal.31"><i class="fab fa-facebook"></i></a>
+
+        </div>
+
+        <p>
+            Copyright © 2026 | All Rights Reserved
+        </p>
+
     </footer>
 
     <script>
-        const textElement = document.getElementById('typing-text');
-        const text = "Software Developer";
 
-        let index = 0;
-        let isDeleting = false;
+        const textElement =
+            document.getElementById("typing-text");
+
+        const texts = [
+            "Ethical Hacker",
+            "Web Developer",
+            "Programmer",
+            "Tech Enthusiast"
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
 
         function typeEffect() {
 
-            textElement.textContent = text.slice(0, index);
+            let currentText = texts[textIndex];
 
-            if (!isDeleting && index < text.length) {
-                index++;
-            } else if (isDeleting && index > 0) {
-                index--;
+            if (!deleting) {
+
+                textElement.textContent =
+                    currentText.substring(0, charIndex++);
+
+                if (charIndex > currentText.length) {
+
+                    deleting = true;
+
+                    setTimeout(typeEffect, 1200);
+
+                    return;
+                }
+
+            }
+            else {
+
+                textElement.textContent =
+                    currentText.substring(0, charIndex--);
+
+                if (charIndex < 0) {
+
+                    deleting = false;
+
+                    textIndex =
+                        (textIndex + 1) % texts.length;
+                }
             }
 
-            if (index === text.length) {
-                isDeleting = true;
-                setTimeout(typeEffect, 1000);
-                return;
-            }
+            setTimeout(typeEffect,
+                deleting ? 70 : 120);
 
-            if (index === 0 && isDeleting) {
-                isDeleting = false;
-            }
-
-            setTimeout(typeEffect, isDeleting ? 70 : 150);
         }
 
         typeEffect();
+
     </script>
 
 </body>
+
 </html>
